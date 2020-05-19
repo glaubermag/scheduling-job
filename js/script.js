@@ -2,12 +2,13 @@
 var Job = [{ "ID": 1, "Description": "Importação de arquivos de fundos", "MaxDate": "2019-11-10 08:00:00", "time": 2 }, { "ID": 2, "Description": "Importação de dados da Base Legada", "MaxDate": "2019-11-11 12:00:00", "time": 4 }, { "ID": 3, "Description": "Importação de dados de integração", "MaxDate": "2019-11-11 08:00:00", "time": 6 }]
     // Verificar no console se o array está sendo exibido corretamente
     // console.log(Job[0]);
-
+var array;
 // Checar se todas as datas estão dentro do intervalo esperado.
 // Data inicio
 const dateStart = new Date(' 2019-11-10 09:00:00');
 // Data final
 const dateEnd = new Date('2019-11-11 12:00:00');
+var count = 0;
 
 for (i = 0; i < Job.length; i++) {
     var dateIndex = Job[i].MaxDate;
@@ -19,10 +20,11 @@ for (i = 0; i < Job.length; i++) {
     }
 }
 
+
 console.log('Consultando array antes de ordenar');
-console.log(Job[0].MaxDate, Job[0].ID);
-console.log(Job[1].MaxDate, Job[1].ID);
-console.log(Job[2].MaxDate, Job[2].ID);
+for (i = 0; i < Job.length; i++) {
+    console.log(Job[i].MaxDate, Job[i].ID);
+}
 
 //Ordenar array pela data
 Job.sort(function(a, b) {
@@ -30,25 +32,26 @@ Job.sort(function(a, b) {
         dateB = new Date(b.MaxDate);
     return dateA - dateB;
 });
-console.log('Consultando array depois de ordenar');
-console.log(Job[0].MaxDate, Job[0].ID);
-console.log(Job[1].MaxDate, Job[1].ID);
-console.log(Job[2].MaxDate, Job[2].ID);
+
 
 console.log('Consultando array depois de ordenar');
+for (i = 0; i < Job.length; i++) {
+    console.log(Job[i].MaxDate, Job[i].ID);
+}
 
 
-if ((Job[0].time) + (Job[1].time) == 8) {
-    console.log('Atendimentos dia 10/11/2019');
-    console.log('Atendimento 1');
-    console.log('ID: ', Job[0].ID, 'Descrição: ', Job[0].Description, 'Tempo estimado:', Job[0].time, 'Horas');
+console.log('Imprimindo agenda');
 
 
-    console.log('Atendimento 2');
-    console.log('ID: ', Job[1].ID, 'Descrição: ', Job[1].Description, 'Tempo estimado:', Job[1].time, 'Horas');
+for (i = 0; i < Job.length; i++) {
 
-    console.log('Atendimentos dia 11/11/2019');
+    count = count + Job[i].time;
+    var print = Job[i].ID
+    document.write(print);
 
-    console.log('ID: ', Job[2].ID, 'Descrição: ', Job[2].Description, 'Tempo estimado:', Job[2].time, 'Horas');
-
+    if (count == 8) {
+        // Pular linha
+        document.writeln(' <br/>');
+        count = 0;
+    }
 }
