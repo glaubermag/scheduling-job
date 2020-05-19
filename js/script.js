@@ -5,7 +5,7 @@ var Job = [{ "ID": 1, "Description": "Importação de arquivos de fundos", "MaxD
 var array;
 // Checar se todas as datas estão dentro do intervalo esperado.
 // Data inicio
-const dateStart = new Date(' 2019-11-10 09:00:00');
+const dateStart = new Date(' 2019-11-10 08:00:00');
 // Data final
 const dateEnd = new Date('2019-11-11 12:00:00');
 var count = 0;
